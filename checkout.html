@@ -1,305 +1,389 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <link rel="icon" href="img/favicon.png" type="image/png" />
-    <title>Eiser ecommerce</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.css" />
-    <link rel="stylesheet" href="vendors/linericon/style.css" />
-    <link rel="stylesheet" href="css/font-awesome.min.css" />
-    <link rel="stylesheet" href="css/themify-icons.css" />
-    <link rel="stylesheet" href="vendors/owl-carousel/owl.carousel.min.css" />
-    <link rel="stylesheet" href="vendors/lightbox/simpleLightbox.css" />
-    <link rel="stylesheet" href="vendors/nice-select/css/nice-select.css" />
-    <link rel="stylesheet" href="vendors/animate-css/animate.css" />
-    <link rel="stylesheet" href="vendors/jquery-ui/jquery-ui.css" />
-    <!-- main css -->
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/responsive.css" />
-  </head>
+<?
+include("database.php");
 
-  <body>
-    <!--================Header Menu Area =================-->
-     <header class="header_area">
-    
-    <div class="main_menu">
-      <div class="container">
-        <nav class="navbar navbar-expand-lg navbar-light w-100">
-          <!-- Brand and toggle get grouped for better mobile display -->
-          <a class="navbar-brand logo_h" href="index.html">
-            <img src="img/logo.png" alt="" />
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <!-- Collect the nav links, forms, and other content for toggling -->
-          <div class="collapse navbar-collapse offset w-100" id="navbarSupportedContent">
-            <div class="row w-100 mr-0">
-              <div class="col-lg-7 pr-0">
-                
-              </div>
+$orderId = $_GET['trackingId'];
+$query = "SELECT *  FROM ordMgmt_orders WHERE orderId='$orderId'";
+$result = $con->query($query);
 
-              <div class="col-lg-5 pr-0">
-                <ul class="nav navbar-nav navbar-right right_nav pull-right">
-                  <a class="main_btn" href="#placeOrder" style="margin:5px;">Place Order</a>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </nav>
-      </div>
-    </div>
-  </header>
-    <!--================Header Menu Area =================-->
 
-    <!--================Home Banner Area =================-->
-    <section class="banner_area">
-      <div class="banner_inner d-flex align-items-center">
-        <div class="container">
-          <div
-            class="banner_content d-md-flex justify-content-between align-items-center"
-          >
-            <div class="mb-3 mb-md-0">
-              <h2>Checkout</h2>
-              <p>Very us move be blessed multiply night</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--================End Home Banner Area =================-->
+$arr_link=array();
+$arr_quantity=array();
+$arr_size=array();
+$arr_color=array();
+$arr_price=array();
 
-    <!--================Checkout Area =================-->
-    <section class="checkout_area section_gap">
-      <div class="container">
-        <div class="billing_details">
-          <div class="row">
-            <div class="col-lg-8">
-              <h3>Billing Details</h3>
-              <form
-                class="row contact_form"
-                action="#"
-                method="post"
-                novalidate="novalidate"
-              >
-                <div class="col-md-6 form-group p_star">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="first"
-                    name="name"
-                  />
-                  <span
-                    class="placeholder"
-                    data-placeholder="First name"
-                  ></span>
-                </div>
-                <div class="col-md-6 form-group p_star">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="last"
-                    name="name"
-                  />
-                  <span class="placeholder" data-placeholder="Last name"></span>
-                </div>
-                <div class="col-md-12 form-group">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="company"
-                    name="company"
-                    placeholder="Company name"
-                  />
-                </div>
-                <div class="col-md-6 form-group p_star">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="number"
-                    name="number"
-                  />
-                  <span
-                    class="placeholder"
-                    data-placeholder="Phone number"
-                  ></span>
-                </div>
-                <div class="col-md-6 form-group p_star">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="email"
-                    name="compemailany"
-                  />
-                  <span
-                    class="placeholder"
-                    data-placeholder="Email Address"
-                  ></span>
-                </div>
-                <div class="col-md-12 form-group p_star">
-                  <select class="country_select">
-                    <option value="1">Country</option>
-                    <option value="2">Country</option>
-                    <option value="4">Country</option>
-                  </select>
-                </div>
-                <div class="col-md-12 form-group p_star">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="add1"
-                    name="add1"
-                  />
-                  <span
-                    class="placeholder"
-                    data-placeholder="Address line 01"
-                  ></span>
-                </div>
-                <div class="col-md-12 form-group p_star">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="add2"
-                    name="add2"
-                  />
-                  <span
-                    class="placeholder"
-                    data-placeholder="Address line 02"
-                  ></span>
-                </div>
-                <div class="col-md-12 form-group p_star">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="city"
-                    name="city"
-                  />
-                  <span class="placeholder" data-placeholder="Town/City"></span>
-                </div>
-                <div class="col-md-12 form-group p_star">
-                  <select class="country_select">
-                    <option value="1">District</option>
-                    <option value="2">District</option>
-                    <option value="4">District</option>
-                  </select>
-                </div>
-                <div class="col-md-12 form-group">
-                  <input
-                    type="text"
-                    class="form-control"
-                    id="zip"
-                    name="zip"
-                    placeholder="Postcode/ZIP"
-                  />
-                </div>               
-              </form>
-            </div>
-            <div class="col-lg-4">
-              <div class="order_box">
-                <h2>Your Order</h2>
-                <ul class="list">
-                  <li>
-                    <a href="#"
-                      >Product
-                      <span>Total</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#"
-                      >Fresh Blackberry
-                      <span class="middle">x 02</span>
-                      <span class="last">$720.00</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#"
-                      >Fresh Tomatoes
-                      <span class="middle">x 02</span>
-                      <span class="last">$720.00</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#"
-                      >Fresh Brocoli
-                      <span class="middle">x 02</span>
-                      <span class="last">$720.00</span>
-                    </a>
-                  </li>
-                </ul>
-                <ul class="list list_2">
-                  <li>
-                    <a href="#"
-                      >Subtotal
-                      <span>$2160.00</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#"
-                      >Shipping
-                      <span>Flat rate: $50.00</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#"
-                      >Total
-                      <span>$2210.00</span>
-                    </a>
-                  </li>
-                </ul>
-                <div class="creat_account">
-                  <br>
-                  <input type="checkbox" id="f-option4" name="selector" />
-                  <label for="f-option4">I’ve read and accept the </label>
-                  <a href="#">terms & conditions*</a>
-                </div>
-                <a class="main_btn" href="#">Place Order</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--================End Checkout Area =================-->
-
-    <!--================ start footer Area  =================-->
-      <footer class="footer-area" style="padding-bottom:20px;padding-top: 5px">
-    <div class="container">
-      
-      <div class="footer-bottom row align-items-center">
-        <p class="footer-text m-0 col-lg-8 col-md-12"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Built by <a href="https://www.anomoz.com" target="_blank">Anomoz Softwares</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+$itemDetails = "";
+$totalItemsCost = 0;
+$query_calculate = "SELECT *  FROM ordMgmt_orders WHERE orderId='$orderId'";
+$result_calculate = $con->query($query_calculate);
+if ($result_calculate->num_rows > 0){
+    while($row = $result_calculate->fetch_assoc()) 
+    { 
+        $totalIndi = $row['priceGBP']* $row['quantity'];
+        $totalItemsCost = $totalItemsCost + $totalIndi;
         
-      </div>
-    </div>
-  </footer>
-    <!--================ End footer Area  =================-->
+        $itemDetails = $itemDetails + $row['productLink']." (".$row['quantity'].") - Size: ".$row['size']." Color: ".$row['color']." - Price of 1 (GBP) = ".$row['price']."<br>";
+        /**
+        array_push($arr_link,$row['productLink']);
+        array_push($arr_quantity,$row['quantity']);
+        array_push($arr_size,$row['size']);
+        array_push($arr_color,$row['color']);
+        array_push($arr_price,$row['price']);
+        **/
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="js/jquery-3.2.1.min.js"></script>
-    <script src="js/popper.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/stellar.js"></script>
-    <script src="vendors/lightbox/simpleLightbox.min.js"></script>
-    <script src="vendors/nice-select/js/jquery.nice-select.min.js"></script>
-    <script src="vendors/isotope/imagesloaded.pkgd.min.js"></script>
-    <script src="vendors/isotope/isotope-min.js"></script>
-    <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
-    <script src="js/jquery.ajaxchimp.min.js"></script>
-    <script src="js/mail-script.js"></script>
-    <script src="vendors/jquery-ui/jquery-ui.js"></script>
-    <script src="vendors/counter-up/jquery.waypoints.min.js"></script>
-    <script src="vendors/counter-up/jquery.counterup.js"></script>
-    <script src="js/theme.js"></script>
-  </body>
+    }
+}
+
+$shippingCost = ($totalItemsCost*.05);
+$serviceCharges = ($totalItemsCost*.20);
+$total = $totalItemsCost+$serviceCharges+$shippingCost;
+$conversion_rate = 202.63;
+$totalPKR = $total*$conversion_rate;
+
+
+
+if(isset($_POST["name"])&&isset($_POST["number"])&&isset($_POST["email"])){
+    $name = $_POST["name"];
+    $phone = $_POST["number"];
+    $customerEmail = $_POST["email"];
+    $company = $_POST["company"];
+    $address = $_POST["address"];
+    
+    $message = $_SESSION['message'];
+    
+    date_default_timezone_set("Asia/Karachi");
+    $timeAdded = time();
+    $sql="INSERT INTO `ordMgmt_ordersCheckedOut`(`id`,`trackingId`, `buyingCost`, `shipping`, `serviceCharges`,
+    `totalGBP`, `totalPKR`, `conversion`, `timeAdded`, `name`, `company`, `phone`, `email`, `address`, `message`) VALUES
+    ('1','$orderId','$totalItemsCost','$shippingCost','$serviceCharges','$total','$totalPKR',
+    '$conversion_rate','$timeAdded','$name','$company','$phone','$customerEmail','$address', '$message')";
+
+    if(!mysqli_query($con,$sql))
+    {
+    echo"<br><h1 style='text-align:center;color:red;'>Error Occurred.</h1>";
+    }else{
+        //
+        
+       $emailContent_customer= "Dear Customer,
+<br>
+Thanks for ordering. We have received the order. 
+<br>
+Rules to remember:
+<br>
+<ul>
+  <li>Delivery batch details:</li>
+  <li>Incase, you need to change the ordr</li>
+</ul>
+<br>
+Simply, reply to this email for any tracking related queries later.
+<br>
+<hr>
+Your order details:<br>
+TrackingId: ".$orderId."<br>
+Total (GBP): ".$total."<br>
+Total (PKR): ".$totalPKR."<br>
+Your Cart:<br>".$itemDetails."<br>
+Message: <br>".$message."<br>"
+;
+
+$emailContent_admin = "
+A new order has been placed.<br>
+Name: ".$name."<br>
+Phone: ".$phone."<br>
+Email: ".$customerEmail."<br>
+Company: ".$company."<br>
+Address: ".$address."<br>
+
+<hr>
+Cart:<br>".$itemDetails."<br>
+Message: <br>".$message."<br>
+";
+        
+        
+        
+        
+        
+        
+        
+        header('Access-Control-Allow-Origin: *');
+  header('Content-Type: application/json');
+  header('Access-Control-Allow-Methods: POST');
+  header('Access-Control-Allow-Headers: Access-Control-Allow-Headers,Content-Type,Access-Control-Allow-Methods, Authorization, X-Requested-With');
+
+
+  // Get raw posted data
+  //send email
+  error_reporting(E_ALL ^ E_NOTICE ^ E_DEPRECATED ^ E_STRICT);
+
+    set_include_path("." . PATH_SEPARATOR . ($UserDir = dirname($_SERVER['DOCUMENT_ROOT'])) . "/php" . PATH_SEPARATOR . get_include_path());
+    require_once "Mail.php";
+
+    $host = "mail.anomoz.com";
+    $username = "discussion_rooms.library@anomoz.com";
+    $password = "rqkhbu6t";
+    $port = "587";
+    
+    
+    //email admin
+    $to = "discussion_rooms.library@anomoz.com";
+    $email_from = "Orders - Import Lines - <discussion_rooms.library@anomoz.com>";
+    $email_address = "discussion_rooms.library@anomoz.com";
+    $headers = array (
+        'From' => $email_from,
+        'To' => $to, 'Subject' => "New Order Placed", 
+        'Reply-To' => $email_address
+        );
+        $email_body = $emailContent_admin;
+    $smtp = Mail::factory('smtp', array ('host' => $host, 'port' => $port, 'auth' => false, 'username' => $username, 'password' => $password));
+    $mail = $smtp->send($to, $headers, $email_body);
+    if (PEAR::isError($mail)) {
+    echo("<p>" . $mail->getMessage() . "</p>");
+    } else {
+    echo("<p>Message successfully sent!</p>");
+    }
+    
+    
+    //email customer
+    $to =$customerEmail;
+    $email_from = "Orders - Import Lines - <discussion_rooms.library@anomoz.com>";
+    $email_address = "discussion_rooms.library@anomoz.com";
+    $headers = array (
+        'From' => $email_from,
+        'To' => $to, 'Subject' => "Order Placed Successfully", 
+        'Reply-To' => $email_address
+        );
+        $email_body = $emailContent_customer;
+    $smtp = Mail::factory('smtp', array ('host' => $host, 'port' => $port, 'auth' => false, 'username' => $username, 'password' => $password));
+    $mail = $smtp->send($to, $headers, $email_body);
+    if (PEAR::isError($mail)) {
+    echo("<p>" . $mail->getMessage() . "</p>");
+    } else {
+    echo("<p>Message successfully sent!</p>");
+    }
+    
+    
+    
+    
+    
+    
+        
+        
+        
+        
+        
+        ?>
+        <script type="text/javascript">
+            window.location = "./orderSuccess.php";
+        </script>
+        <?
+    }
+    
+    
+}
+
+
+
+?>
+<?include_once("./phpParts/head.php")?>
+
+    <body>
+        <!--================Header Menu Area =================-->
+        <header class="header_area"><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+            <div class="main_menu">
+                <div class="container">
+                    <nav class="navbar navbar-expand-lg navbar-light w-100">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <a class="navbar-brand logo_h" href="./" style="margin:10px;">
+            <b style="color:white; background-color:black; padding:10px;border-radius:5px;">Import Lines</b>
+          </a>
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse offset w-100" id="navbarSupportedContent">
+                            <div class="row w-100 mr-0">
+                                <div class="col-lg-7 pr-0">
+
+                                </div>
+
+                            
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </header>
+        <!--================Header Menu Area =================-->
+
+        <!--================Home Banner Area =================-->
+        <section class="banner_area">
+            <div class="banner_inner d-flex align-items-center">
+                <div class="container">
+                    <div class="banner_content d-md-flex justify-content-between align-items-center">
+                        <div class="mb-3 mb-md-0">
+                            <h2>Checkout</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--================End Home Banner Area =================-->
+
+        <!--================Checkout Area =================-->
+        <section class="checkout_area section_gap">
+            <form class="container" action="" method="post">
+                <div class="billing_details">
+                    <div class="row">
+                        <div class="col-lg-8">
+                            
+                            
+                            
+                            <h3>Products List</h3>
+                            
+                            <div class="container">
+        <div class="cart_inner">
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">Product</th>
+                  <th scope="col">Price</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                  
+                <?
+                if ($result->num_rows > 0){
+                while($row = $result->fetch_assoc()) 
+                { 
+                ?>
+                    <tr>
+                  <td>
+                    <div class="media">
+                      <div class="media-body">
+                        <p><?echo $row['productLink']?></p>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <h5> <span>&#163;</span>  <?echo $row['priceGBP']?></h5>
+                  </td>
+                  <td>
+                    <div class="product_count">
+                      <input type="text" name="qty" id="sst" maxlength="12" value="<?echo $row['quantity']?>" title="Quantity:" class="input-text qty" readonly>
+                    </div>
+                  </td>
+                  <td>
+                      <?
+                        $totalIndi = $row['priceGBP']* $row['quantity'];
+                      ?>
+                    <h5> <span>&#163;</span>  <?echo $totalIndi?></h5>
+                  </td>
+                </tr>
+                <?
+                    }
+                }?>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      
+                            
+                            
+                            
+                            <h3>Billing Details</h3>
+                            <div class="row contact_form" >
+                                <div class="col-md-6 form-group p_star">
+                                    <input type="text" class="form-control" id="first" name="name" required placeholder="Name"/>
+                                </div>
+                                <div class="col-md-6 form-group">
+                                    <input type="text" class="form-control" id="company" name="company" placeholder="Company name" />
+                                </div>
+                                <div class="col-md-6 form-group p_star">
+                                    <input type="text" class="form-control" id="number" name="number" placeholder="Phone number" required/>
+                                </div>
+                                <div class="col-md-6 form-group p_star">
+                                    <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required/>
+                                </div>
+                                <div class="col-md-12 form-group">
+                                    <input type="text" class="form-control" id="add1" name="address" placeholder="Address" />
+                                </div>
+                               
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="order_box">
+                                <h2>Total Breakup</h2>
+                                <ul class="list list_2">
+                                    <li>
+                                        <a href="#">Buying Cost
+                      <span>&#163; <?echo $totalItemsCost;?></span>
+                    </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">UK to PK Shipping
+                      <span>&#163; <?echo $shippingCost;?></span>
+                    </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">20% Service Charges
+                      <span>&#163; <?echo $serviceCharges;?></span>
+                    </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Total
+                      <span>&#163; <?echo $total;?></span>
+                    </a>
+                                    </li>
+                                    
+                                     <li style="background-color:#555;color:white;padding:5px 10px 5px 10px;; border-radius:5px;">
+                                        <div style="color:white">Total
+                      <span style="color:white; right:1px; float:right;">Rs. <?echo $totalPKR;?></span>
+                    </div>
+                                    </li>
+                                    
+                                </ul>
+                                <div class="creat_account">
+                                    <label for="f-option4">Currency Conversion: 1 GBP = <?echo $conversion_rate?> PKR </label>
+                                </div>
+                                <button class="main_btn" type="submit" style="width:100%;">Place Order</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </section>
+        <!--================End Checkout Area =================-->
+
+        <!--================ start footer Area  =================-->
+        <?include_once("./phpParts/footer.php")?>
+            <!--================ End footer Area  =================-->
+
+            <!-- Optional JavaScript -->
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+            <script src="js/jquery-3.2.1.min.js"></script>
+            <script src="js/popper.js"></script>
+            <script src="js/bootstrap.min.js"></script>
+            <script src="js/stellar.js"></script>
+            <script src="vendors/lightbox/simpleLightbox.min.js"></script>
+            <script src="vendors/nice-select/js/jquery.nice-select.min.js"></script>
+            <script src="vendors/isotope/imagesloaded.pkgd.min.js"></script>
+            <script src="vendors/isotope/isotope-min.js"></script>
+            <script src="vendors/owl-carousel/owl.carousel.min.js"></script>
+            <script src="js/jquery.ajaxchimp.min.js"></script>
+            <script src="js/mail-script.js"></script>
+            <script src="vendors/jquery-ui/jquery-ui.js"></script>
+            <script src="vendors/counter-up/jquery.waypoints.min.js"></script>
+            <script src="vendors/counter-up/jquery.counterup.js"></script>
+            <script src="js/theme.js"></script>
+    </body>
+
 </html>
