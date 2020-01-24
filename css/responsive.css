@@ -116,7 +116,7 @@
 		display: block;
 		width: 25px;
 		height: 3px;
-		background: #1641ff;
+		background: black;
 		margin: auto;
 		margin-bottom: 4px;
 		transition: all 400ms linear;
